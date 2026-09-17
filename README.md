@@ -13,26 +13,13 @@ A single repository implementing the requested AWS infrastructure design and loc
 
 ## Architecture
 
-```text
-Internet
-   |
-   v
- ALB (public subnets)
-   |
-   v
- ECS/Fargate (private subnets)
-   |
-   v
- RDS PostgreSQL (private subnets)
-```
+Internet ---> ALB --> ECS/Fargate --> PostgreSQL
+ALB------Public subnets
+ECS/Fargate -----Private Subnets
+RDS PostgreSQL ----- Private Subnets
 
-The security-group flow is:
 
-```text
-0.0.0.0/0 -> ALB SG -> ECS SG -> RDS SG:5432
-```
-
-RDS is private and has no public IP. ECS tasks run with `assign_public_ip = false`. NAT gateways provide outbound connectivity from private subnets without making those resources directly reachable from the internet.
+-> Running ECS tasks run with `assign_public_ip = false`. NAT gateways will provide outbound connectivity from private subnets with no inbound connectivity.
 
 ## Repository Structure
 

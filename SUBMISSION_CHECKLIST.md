@@ -1,4 +1,5 @@
-Submission Checklist
+# Submission Checklist
+
 Submit a GitHub repository with:
 ● Terraform infrastructure code
 ● dev and prod Terraform environment examples

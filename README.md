@@ -2,6 +2,8 @@
 
 This repo contains my solution for the DevOps assessment.
 
+Worked on VS Code pushed to github.
+
 The Terraform part is structured into reusable modules with separate
 dev and prod environments. The database part runs locally using
 PostgreSQL and Docker Compose.

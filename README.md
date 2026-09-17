@@ -1,4 +1,13 @@
-# DevOps Assessment — Terraform + Database Reliability
+# Terraform + Database Reliability
+
+This repo contains my solution for the DevOps assessment.
+
+The Terraform part is structured into reusable modules with separate
+dev and prod environments. The database part runs locally using
+PostgreSQL and Docker Compose.
+
+AWS resources are not deployed as part of this assignment. Terraform
+is only validated and planned locally/GitHub Actions.# DevOps Assessment — Terraform + Database Reliability
 
 A single repository implementing the requested AWS infrastructure design and local database reliability exercise.
 
@@ -24,19 +33,6 @@ The security-group flow is:
 ```
 
 RDS is private and has no public IP. ECS tasks run with `assign_public_ip = false`. NAT gateways provide outbound connectivity from private subnets without making those resources directly reachable from the internet.
-
-See [docs/architecture.md](docs/architecture.md) for the detailed diagram.
-
-## Assessment Coverage
-
-| Part | Requirement | Implementation |
-|---|---|---|
-| 1 | AWS infrastructure | `infra/modules/` |
-| 2 | Dev + prod environments | `infra/envs/dev`, `infra/envs/prod` |
-| 3 | Terraform CI | `.github/workflows/terraform.yml` |
-| 4 | Local PostgreSQL | `docker-compose.yml`, `db/migrations/` |
-| 5 | Seed data + query optimization | `db/seed/`, `003_add_booking_query_index.sql` |
-| 6 | Backup + restore | `scripts/backup.sh`, `scripts/restore.sh` |
 
 ## Repository Structure
 
@@ -82,8 +78,6 @@ The Terraform is split into reusable modules:
 - ECS uses private subnets and no public IP.
 
 ### Terraform validation
-
-No AWS deployment is required for this assessment.
 
 From `infra/envs/dev`:
 

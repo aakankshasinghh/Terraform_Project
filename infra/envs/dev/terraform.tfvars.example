@@ -1,0 +1,9 @@
+# Copy to dev.tfvars only if you need a private override.
+# Prefer: export TF_VAR_db_password="..."
+# Never commit real credentials.
+
+aws_region   = "ap-south-1"
+project_name = "devops-assessment-dev"
+environment  = "dev"
+
+# Keep the remaining environment values aligned with dev.tfvars.

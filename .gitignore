@@ -1,0 +1,16 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+backups/*.sql
+.DS_Store
+Thumbs.db
+# Ignore ad-hoc root secrets, but keep assessment environment templates tracked.
+terraform.tfvars
+*.auto.tfvars
+!infra/envs/dev/dev.tfvars
+!infra/envs/prod/prod.tfvars
+!infra/envs/dev/terraform.tfvars.example
+!infra/envs/prod/terraform.tfvars.example
